@@ -1,0 +1,4 @@
+npm i -g pm2
+pm2 startup
+echo Automatically executing startup script...
+sudo env PATH=$PATH:/home/ubuntu/.nvm/versions/node/v12.13.1/bin /home/ubuntu/.nvm/versions/node/v12.13.1/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu

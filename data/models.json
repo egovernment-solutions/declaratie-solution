@@ -1,0 +1,270 @@
+{
+  "declaratie": [
+    {
+      "name": "lastName",
+      "prettyName": "Numele dvs. de familie",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "prettyName": "Prenumele dvs.",
+      "type": "string"
+    },
+    {
+      "name": "fatherLastNameAndFirstName",
+      "prettyName": "Numele și prenumele tatălui",
+      "type": "string"
+    },
+    {
+      "name": "motherLastNameAndFirstName",
+      "prettyName": "Numele și prenumele mamei",
+      "type": "string"
+    },
+    {
+      "name": "city",
+      "prettyName": "Localitatea din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "county",
+      "prettyName": "Județul/sectorul din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "street",
+      "prettyName": "Strada din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "no",
+      "prettyName": "Numărul din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "building",
+      "prettyName": "Blocul din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "floor",
+      "prettyName": "Etajul din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "apartment",
+      "prettyName": "Apartamentul din documentul de identitate",
+      "type": "string"
+    },
+    {
+      "name": "cnp",
+      "prettyName": "CNP",
+      "type": "string"
+    },
+    {
+      "name": "biOrCi",
+      "prettyName": "Tip document de identitate",
+      "type": "select",
+      "options": [
+        {
+          "name": "Buletin de identitate",
+          "value": "bi"
+        },
+        {
+          "name": "Carte de identitate",
+          "value": "ci"
+        }
+      ]
+    },
+    {
+      "name": "biOrCiSeries",
+      "prettyName": "Seria documentului de identitate",
+      "type": "string"
+    },
+    {
+      "name": "biOrCiNumber",
+      "prettyName": "Numărul documentului de identitate",
+      "type": "string"
+    },
+    {
+      "name": "actualCity",
+      "prettyName": "Localitatea în care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "actualCounty",
+      "prettyName": "Județul/sectorul în care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "actualStreet",
+      "prettyName": "Strada pe care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "actualNo",
+      "prettyName": "Numărul la care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "actualBuilding",
+      "prettyName": "Blocul în care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "actualFloor",
+      "prettyName": "Etajul la care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "actualApartment",
+      "prettyName": "Apartamentul în care locuiți în fapt",
+      "type": "string"
+    },
+    {
+      "name": "transitType",
+      "prettyName": "Tipul deplasării",
+      "type": "select",
+      "options": [
+        {
+          "name": "În interes profesional",
+          "value": "profesional"
+        },
+        {
+          "name": "În interes personal",
+          "value": "personal"
+        }
+      ]
+    },
+    {
+      "name": "transitHours",
+      "prettyName": "Intervalul orar al deplasării",
+      "type": "string"
+    },
+    {
+      "name": "transitFrom",
+      "prettyName": "Locația de la care vă deplasați",
+      "type": "string"
+    },
+    {
+      "name": "transitTo",
+      "prettyName": "Locația până la care vă deplasați",
+      "type": "string"
+    },
+    {
+      "name": "transitReason",
+      "prettyName": "Motivul deplasării",
+      "type": "select",
+      "options": [
+        {
+          "name": "Deplasarea între domiciliu și locul de muncă, atunci când activitatea profesională este esențială și nu poate fi organizată sub formă de lucru la distanță sau deplasarea în interes profesional care nu poate fi amânată.",
+          "value": "serviciu"
+        },
+        {
+          "name": "Consult medical de specialitate care nu poate fi amânat",
+          "value": "medical"
+        },
+        {
+          "name": "Deplasare pentru cumpărături de primă necesitate la unități comerciale din zona de domiciliu",
+          "value": "cumparaturi"
+        },
+        {
+          "name": "Deplasare pentru asigurarea asistenței pentru persoane în vârstă, vulnerabile sau pentru însoțirea copiilor",
+          "value": "asistenta"
+        },
+        {
+          "name": "Deplasare scurtă, lângă domiciliu, pentru desfășurarea de activități fizice individuale, în aer liber, cu excluderea oricărei forme de activitate sportivă colectivă",
+          "value": "sport"
+        },
+        {
+          "name": "Deplasare scurtă, lângă domiciliu, legată de nevoile animalelor de companie",
+          "value": "animale"
+        },
+        {
+          "name": "Deplasare pentru rezolvarea următoarei situații urgente",
+          "value": "urgenta"
+        }
+      ]
+    },
+    {
+      "name": "emergencyReason",
+      "prettyName": "Situația urgentă",
+      "type": "string",
+      "hidden": "hideEmergencyReasonCtrl"
+    },
+    {
+      "name": "documentDate",
+      "prettyName": "Data",
+      "type": "datepicker"
+    }
+  ],
+  "adeverinta": [
+    {
+      "name": "employerLastName",
+      "prettyName": "Numele persoanei care reprezintă angajatorul",
+      "type": "string"
+    },
+    {
+      "name": "employerFirstName",
+      "prettyName": "Prenumele persoanei care reprezintă angajatorul",
+      "type": "string"
+    },
+    {
+      "name": "employerPosition",
+      "prettyName": "Funcția persoanei care reprezintă angajatorul",
+      "type": "string"
+    },
+    {
+      "name": "company",
+      "prettyName": "Organizația (instituția/compania) care reprezintă angajatorul",
+      "type": "string"
+    },
+    {
+      "name": "lastName",
+      "prettyName": "Numele angajatului",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "prettyName": "Prenumele angajatului",
+      "type": "string"
+    },
+    {
+      "name": "dateOfBirth",
+      "prettyName": "Data nașterii angajatului",
+      "type": "datepicker",
+      "max": "today",
+      "startView": "multi-year",
+      "startAt": "yearViewStartDate"
+    },
+    {
+      "name": "address",
+      "prettyName": "Adresa angajatului",
+      "type": "string"
+    },
+    {
+      "name": "activityDomain",
+      "prettyName": "Domeniul activității profesionale",
+      "type": "string"
+    },
+    {
+      "name": "activityLocation",
+      "prettyName": "Locul de desfășurare al activității profesionale",
+      "type": "string"
+    },
+    {
+      "name": "itinerary",
+      "prettyName": "Traseul deplasării",
+      "type": "string"
+    },
+    {
+      "name": "transitMeans",
+      "prettyName": "Mijlocul de deplasare",
+      "type": "string"
+    },
+    {
+      "name": "documentDate",
+      "prettyName": "Data",
+      "type": "datepicker"
+    }
+  ]
+}

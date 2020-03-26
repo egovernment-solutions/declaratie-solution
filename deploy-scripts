@@ -1,0 +1,30 @@
+. ./set-used-deployment $1
+./check-used-deployment-validity
+
+retVal=$?
+if [ $retVal -eq 1 ]; then
+    echo "Exitting because of invalid USED_DEPLOYMENT"
+    exit $retVal
+fi
+
+./mount-sshfs $1
+
+rm ./$1-sshfs/home/ubuntu/configure-deployment
+rm ./$1-sshfs/home/ubuntu/install-nginx
+rm ./$1-sshfs/home/ubuntu/configure-nginx-permissions
+rm ./$1-sshfs/home/ubuntu/install-certbot
+rm ./$1-sshfs/home/ubuntu/configure-certbot
+rm ./$1-sshfs/home/ubuntu/install-nvm-node
+rm ./$1-sshfs/home/ubuntu/install-pm2
+rm ./$1-sshfs/home/ubuntu/install-truetype-fonts
+rm ./$1-sshfs/home/ubuntu/install-chrome-deps
+
+cp -v ~/declaratie-solution/configure-deployment ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/install-nginx ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/configure-nginx-permissions ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/install-certbot ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/configure-certbot ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/install-nvm-node ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/install-truetype-fonts ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/install-chrome-deps ./$1-sshfs/home/ubuntu
+cp -v ~/declaratie-solution/install-pm2 ./$1-sshfs/home/ubuntu

@@ -1,0 +1,5 @@
+echo SECURED MODULES
+find ./apps/api/src -name *.module.ts -print0 | xargs -0 grep 'apply(auth0)'
+
+echo UNSECURED MODULES
+find ./apps/api/src -name *.module.ts -print0 | xargs -0 grep -L 'apply(auth0)'

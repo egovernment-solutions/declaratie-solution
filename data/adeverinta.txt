@@ -1,0 +1,12 @@
+employerLastName,
+employerFirstName,
+employerPosition,
+company,
+lastName,
+firstName,
+dateOfBirth,
+address,
+activityDomain,
+activityLocation,
+itinerary,
+transitMeans

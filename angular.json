@@ -1,0 +1,189 @@
+{
+  "version": 1,
+  "projects": {
+    "declaratie-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/declaratie-app",
+      "sourceRoot": "apps/declaratie-app/src",
+      "prefix": "declaratie-solution",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/declaratie-app",
+            "index": "apps/declaratie-app/src/index.html",
+            "main": "apps/declaratie-app/src/main.ts",
+            "polyfills": "apps/declaratie-app/src/polyfills.ts",
+            "tsConfig": "apps/declaratie-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/declaratie-app/src/favicon.ico",
+              "apps/declaratie-app/src/thumbnail.jpg",
+              "apps/declaratie-app/src/logo.png",
+              "apps/declaratie-app/src/assets",
+              "apps/declaratie-app/src/pdfkit.standalone.js",
+              "apps/declaratie-app/src/placeholder.html"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/declaratie-app/src/styles.scss"
+            ],
+            "scripts": [
+              "apps/declaratie-app/src/pdfkit.standalone.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/declaratie-app/src/environments/environment.ts",
+                  "with": "apps/declaratie-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "declaratie-app:build",
+            "proxyConfig": "apps/declaratie-app/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "declaratie-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "declaratie-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/declaratie-app/tsconfig.app.json",
+              "apps/declaratie-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/declaratie-app/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/declaratie-app/jest.config.js",
+            "tsConfig": "apps/declaratie-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/declaratie-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "declaratie-app-e2e": {
+      "root": "apps/declaratie-app-e2e",
+      "sourceRoot": "apps/declaratie-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/declaratie-app-e2e/cypress.json",
+            "tsConfig": "apps/declaratie-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "declaratie-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "declaratie-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/declaratie-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/declaratie-app-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "api-interfaces": {
+      "root": "libs/api-interfaces",
+      "sourceRoot": "libs/api-interfaces/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-interfaces/tsconfig.lib.json",
+              "libs/api-interfaces/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-interfaces/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-interfaces/jest.config.js",
+            "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "declaratie-app"
+}

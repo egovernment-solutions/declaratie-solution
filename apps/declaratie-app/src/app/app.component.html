@@ -1,0 +1,281 @@
+<!-- <mat-toolbar>
+  <h1 class="mat-headline">Generator de documente</h1>
+</mat-toolbar> -->
+<mat-toolbar color="primary" fxLayoutAlign="center">
+  <img src="logo.png" alt="SC eGovernment Solutions SRL" style="height: 40px; width: auto; margin-top: 10px"/>
+</mat-toolbar>
+<mat-toolbar style="min-height: 64px; height: auto; white-space: normal; padding: 10px 16px; background: #de0000" color="primary" >
+  <h2 class="mat-subtitle">Generator pentru documentele necesare complianței cu
+    <a
+      href="https://www.mai.gov.ro/wp-content/uploads/2020/03/Ordonanta-militar%C4%83-nr.-2-2020-m%C4%83suri-prevenire-COVID-19-1-1.pdf"
+      target="_blank"
+    >ORDONANȚA MILITARĂ nr. 3</a> 
+    din 24 martie 2020 privind măsuri de prevenire a răspândirii COVID-19</h2>
+</mat-toolbar>
+<mat-toolbar fxLayoutAlign="space-between center" style="opacity: 0.4; background: linear-gradient(to bottom, #ccc, #fff)" >
+  <mat-icon>settings</mat-icon>
+  <mat-icon>insert_drive_file</mat-icon>
+  <mat-icon>gavel</mat-icon>
+  <mat-icon>block</mat-icon>
+  <mat-icon>wifi_tethering</mat-icon>
+  <mat-icon>bug_report</mat-icon>
+  <div>🇷🇴</div>
+</mat-toolbar>
+
+<div>
+<div style="padding: 20px; max-width: 1366px; margin: 0 auto" *ngIf="isFacebookApp()">
+  <mat-card>
+    <p>Această aplicație nu funcționează în In-App browser-ul Facebook, deoarece acesta împiedică download-ul documentelor.<br/><br/>
+    Apăsați butonul de <b>Share</b> de mai jos din In-App browser-ul Facebook și deschideți această pagină în browser-ul terminalului dvs. pentru a putea folosi aplicația.</p>
+  </mat-card>
+</div>
+<div style="padding: 20px; max-width: 1366px; margin: 0 auto" *ngIf="!isFacebookApp()">
+  <div style="opacity: 1">
+
+    <p style="font-weight: 700">
+      Această aplicație poate genera
+      <a href="https://drive.google.com/open?id=1tt1fs1ClgdLHIn8-w2RQHiQGwbX8m1DS" target="_blank">declarația pe proprie răspundere</a>
+      și
+      <a href="https://drive.google.com/open?id=1Qi7A_IdTdfueuxygLS-agiWJH0wIY2lQ" target="_blank">adeverința permanentă</a>
+      ce vă sunt necesare a fi prezentate organelor abilitate în conformitate cu în Ordonanța Militară nr. 3/2020.
+    </p>
+    <p>
+      După completarea formularului, veți putea descărca documentul cerut în format PDF.
+    </p>
+    <p>
+      <small>Această soluție este oferită gratuit de SC eGovernment Solutions SRL.<br/>SC eGovernment Solutions SRL nu stochează datele dvs. personale, care doar tranzitează server-ul nostru pentru a vă genera documentele.</small>
+    </p>
+    <p>
+      <small><a href="mailto:office@egovernment.ro">office@egovernment.ro</a></small>
+    </p>
+    <p>
+      <small>
+        <a href="https://drive.google.com/open?id=1am0UV1KCZy0CPEv-vW5T269tMJlTbCGE" target="_blank">Politica de confidențialitate</a>
+      </small>
+    </p>
+  </div>
+  <div style="margin: 20px 0" fxLayout="column">
+    <p style="font-weight: bold">Selectați tipul documentului</p>
+    <div style="height: 60px">
+      <mat-radio-group aria-label="Select an option" fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="4px" fxFlex [(ngModel)]="requestedDocument">
+        <mat-radio-button value="declaratie">Declarație pe proprie răspundere</mat-radio-button>
+        <mat-radio-button value="adeverinta">Adeverință permanentă</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div>
+    <!-- START AUTOMATION TOKEN -->
+    <form [formGroup]="declaratieForm" *ngIf="requestedDocument === 'declaratie'">
+      <mat-form-field appearance="fill">
+        <mat-label>Numele dvs. de familie</mat-label>
+        <input matInput type="text" formControlName="lastName" name="lastName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Prenumele dvs.</mat-label>
+        <input matInput type="text" formControlName="firstName" name="firstName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Numele și prenumele tatălui</mat-label>
+        <input matInput type="text" formControlName="fatherLastNameAndFirstName" name="fatherLastNameAndFirstName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Numele și prenumele mamei</mat-label>
+        <input matInput type="text" formControlName="motherLastNameAndFirstName" name="motherLastNameAndFirstName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Localitatea din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="city" name="city" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Județul/sectorul din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="county" name="county" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Strada din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="street" name="street" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Numărul din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="no" name="no" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Blocul din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="building" name="building" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Etajul din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="floor" name="floor" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Apartamentul din documentul de identitate</mat-label>
+        <input matInput type="text" formControlName="apartment" name="apartment" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>CNP</mat-label>
+        <input matInput type="text" formControlName="cnp" name="cnp" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Tip document de identitate</mat-label>
+        <mat-select formControlName="biOrCi" name="biOrCi">
+          <mat-option value="bi">Buletin de identitate</mat-option>
+          <mat-option value="ci">Carte de identitate</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Seria documentului de identitate</mat-label>
+        <input matInput type="text" formControlName="biOrCiSeries" name="biOrCiSeries" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Numărul documentului de identitate</mat-label>
+        <input matInput type="text" formControlName="biOrCiNumber" name="biOrCiNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Localitatea în care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualCity" name="actualCity" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Județul/sectorul în care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualCounty" name="actualCounty" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Strada pe care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualStreet" name="actualStreet" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Numărul la care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualNo" name="actualNo" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Blocul în care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualBuilding" name="actualBuilding" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Etajul la care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualFloor" name="actualFloor" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Apartamentul în care locuiți în fapt</mat-label>
+        <input matInput type="text" formControlName="actualApartment" name="actualApartment" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Tipul deplasării</mat-label>
+        <mat-select formControlName="transitType" name="transitType">
+          <mat-option value="profesional">În interes profesional</mat-option>
+          <mat-option value="personal">În interes personal</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Intervalul orar al deplasării</mat-label>
+        <input matInput type="text" formControlName="transitHours" name="transitHours" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Locația de la care vă deplasați</mat-label>
+        <input matInput type="text" formControlName="transitFrom" name="transitFrom" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Locația până la care vă deplasați</mat-label>
+        <input matInput type="text" formControlName="transitTo" name="transitTo" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Motivul deplasării</mat-label>
+        <mat-select formControlName="transitReason" name="transitReason">
+          <mat-option value="serviciu">Deplasarea între domiciliu și locul de muncă, atunci când activitatea profesională este esențială și nu poate fi organizată sub formă de lucru la distanță sau deplasarea în interes profesional care nu poate fi amânată.</mat-option>
+          <mat-option value="medical">Consult medical de specialitate care nu poate fi amânat</mat-option>
+          <mat-option value="cumparaturi">Deplasare pentru cumpărături de primă necesitate la unități comerciale din zona de domiciliu</mat-option>
+          <mat-option value="asistenta">Deplasare pentru asigurarea asistenței pentru persoane în vârstă, vulnerabile sau pentru însoțirea copiilor</mat-option>
+          <mat-option value="sport">Deplasare scurtă, lângă domiciliu, pentru desfășurarea de activități fizice individuale, în aer liber, cu excluderea oricărei forme de activitate sportivă colectivă</mat-option>
+          <mat-option value="animale">Deplasare scurtă, lângă domiciliu, legată de nevoile animalelor de companie</mat-option>
+          <mat-option value="urgenta">Deplasare pentru rezolvarea următoarei situații urgente</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" [ngClass]="{'hidden-ctrl': hideEmergencyReasonCtrl}">
+        <mat-label>Situația urgentă</mat-label>
+        <input matInput type="text" formControlName="emergencyReason" name="emergencyReason" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="documentDateDatepicker" formControlName="documentDate" name="documentDate" (click)="documentDateDatepicker.open()">
+        <mat-datepicker-toggle matSuffix [for]="documentDateDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #documentDateDatepicker></mat-datepicker>
+      </mat-form-field>
+    </form>
+
+    <form [formGroup]="adeverintaForm" *ngIf="requestedDocument === 'adeverinta'">
+      <mat-form-field appearance="fill">
+        <mat-label>Numele persoanei care reprezintă angajatorul</mat-label>
+        <input matInput type="text" formControlName="employerLastName" name="employerLastName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Prenumele persoanei care reprezintă angajatorul</mat-label>
+        <input matInput type="text" formControlName="employerFirstName" name="employerFirstName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Funcția persoanei care reprezintă angajatorul</mat-label>
+        <input matInput type="text" formControlName="employerPosition" name="employerPosition" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Organizația (instituția/compania) care reprezintă angajatorul</mat-label>
+        <input matInput type="text" formControlName="company" name="company" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Numele angajatului</mat-label>
+        <input matInput type="text" formControlName="lastName" name="lastName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Prenumele angajatului</mat-label>
+        <input matInput type="text" formControlName="firstName" name="firstName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Data nașterii angajatului</mat-label>
+        <input matInput [matDatepicker]="dateOfBirthDatepicker" formControlName="dateOfBirth" name="dateOfBirth" (click)="dateOfBirthDatepicker.open()" [max]="today">
+        <mat-datepicker-toggle matSuffix [for]="dateOfBirthDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateOfBirthDatepicker startView="multi-year" [startAt]="yearViewStartDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Adresa angajatului</mat-label>
+        <input matInput type="text" formControlName="address" name="address" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Domeniul activității profesionale</mat-label>
+        <input matInput type="text" formControlName="activityDomain" name="activityDomain" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Locul de desfășurare al activității profesionale</mat-label>
+        <input matInput type="text" formControlName="activityLocation" name="activityLocation" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Traseul deplasării</mat-label>
+        <input matInput type="text" formControlName="itinerary" name="itinerary" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mijlocul de deplasare</mat-label>
+        <input matInput type="text" formControlName="transitMeans" name="transitMeans" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="documentDateDatepicker" formControlName="documentDate" name="documentDate" (click)="documentDateDatepicker.open()">
+        <mat-datepicker-toggle matSuffix [for]="documentDateDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #documentDateDatepicker></mat-datepicker>
+      </mat-form-field>
+    </form><!-- END AUTOMATION TOKEN -->
+    <!-- <div style="background: rgba(0,0,0,.04); padding: 16px; border-radius: 4px; margin-bottom: 20px">
+      <div fxLayout="row" fxLayoutAlign="space-between" style="margin-bottom: 10px">
+        <div style="color: rgba(0,0,0,.7)">Semnătura<br/><small>Desenați semnătura dvs. în chenarul alb de mai jos.</small></div>
+        <div>
+          <button mat-raised-button (click)="clear()">
+            <mat-icon style="margin-right: 5px">clear</mat-icon>
+            ȘTERGE SEMNĂTURA
+          </button>
+        </div>
+      </div>
+      <ngx-sign-pad [(signature)]="signature" [type]="imageTypes.SVG" style="background: #fff; border: 1px solid #eee; border-radius: 4px; width: 400px; height: 200px"></ngx-sign-pad>
+    </div> -->
+    <button mat-raised-button color="primary" style="width: 100%; font-size: 18px; padding-top: 10px; padding-bottom: 10px" (click)="download()" [disabled]="loading">
+      <mat-icon style="margin-right: 5px" *ngIf="!loading">get_app</mat-icon>
+      <span *ngIf="!loading">DESCARCĂ DOCUMENTUL</span>
+      <span *ngIf="loading">SE GENEREAZĂ...</span>
+    </button>
+  </div>
+
+</div>
+</div>

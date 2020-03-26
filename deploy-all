@@ -1,0 +1,13 @@
+. ./set-used-deployment $1
+./check-used-deployment-validity
+
+retVal=$?
+if [ $retVal -eq 1 ]; then
+    echo "Exitting because of invalid USED_DEPLOYMENT"
+    exit $retVal
+fi
+
+./mount-sshfs $1
+
+./deploy-scripts $1
+./deploy-declaratie-app $1

@@ -1,0 +1,11 @@
+IFS=$'\n' allowedDeployments=($(cut -d '=' -f1 allowed-deployments))
+
+deploymentArg=$USED_DEPLOYMENT
+
+if ( dlm=$'\x1F' ; IFS="$dlm" ; [[ "$dlm${allowedDeployments[*]}$dlm" == *"$dlm${deploymentArg}$dlm"* ]] ) ; then
+    echo USED_DEPLOYMENT is valid and is set to $USED_DEPLOYMENT
+else
+    echo ERROR: Invalid USED_DEPLOYMENT $USED_DEPLOYMENT
+    echo        Expected one of these values: ${allowedDeployments[@]}
+    exit 1
+fi

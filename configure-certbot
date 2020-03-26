@@ -1,0 +1,6 @@
+echo Reloading NGINX...
+sudo systemctl reload nginx
+echo Checking NGINX configuration validity...
+sudo nginx -t
+echo Run the command on the following line to configure certbot:
+echo sudo certbot --nginx -d YOURDOMAINHERE

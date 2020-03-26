@@ -1,0 +1,7 @@
+transitReasonMap,
+buildingExpr,
+floorExpr,
+apartmentExpr,
+actualBuildingExpr,
+actualFloorExpr,
+actualApartmentExpr

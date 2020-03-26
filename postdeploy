@@ -1,0 +1,1 @@
+sed -i -e '28d' package.json && npm install && pm2 restart api && pm2 save

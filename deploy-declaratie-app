@@ -1,0 +1,12 @@
+. ./set-used-deployment $1
+./check-used-deployment-validity
+
+retVal=$?
+if [ $retVal -eq 1 ]; then
+    echo "Exitting because of invalid USED_DEPLOYMENT"
+    exit $retVal
+fi
+
+./mount-sshfs $1
+
+ng build declaratie-app --prod --base-href / && rm -rf ./$1-sshfs/var/www/declaratie-app && cp -rv ~/declaratie-solution/dist/apps/declaratie-app ./$1-sshfs/var/www/declaratie-app

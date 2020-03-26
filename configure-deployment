@@ -1,0 +1,4 @@
+./install-nvm-node
+./install-nginx
+./install-pm2
+./install-truetype-fonts

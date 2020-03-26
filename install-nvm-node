@@ -1,0 +1,13 @@
+echo Downloading nvm install script and running it...
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
+echo Setting nvm environment variables for current session...
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+echo Installing node v12.13.1...
+nvm install v12.13.1
+
+echo Checking node version...
+node -v

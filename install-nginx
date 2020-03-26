@@ -1,0 +1,20 @@
+echo Updating package lists...
+sudo apt update
+
+echo Installing NGINX...
+sudo apt install nginx
+
+echo Verifying NGINX service status...
+systemctl status nginx
+
+echo Getting instance public IP and storing it in PUBLIC_IP environment variable...
+export PUBLIC_IP=$(curl -4 icanhazip.com)
+
+echo Public IP is $PUBLIC_IP
+
+echo Trying to access NGINX default landing page...
+curl localhost
+
+# You can also use this command to get the public IP:
+# curl -4 icanhazip.com
+

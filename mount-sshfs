@@ -1,0 +1,16 @@
+. ./set-used-deployment $1
+./check-used-deployment-validity
+
+retVal=$?
+if [ $retVal -eq 1 ]; then
+    echo "Exitting because of invalid USED_DEPLOYMENT"
+    exit $retVal
+fi
+
+deploymentInstances_prod=ec2-18-197-119-151.eu-central-1.compute.amazonaws.com
+
+deploymentInstance=deploymentInstances_${USED_DEPLOYMENT}
+echo ${!deploymentInstance};
+
+mkdir -p $1-sshfs
+sshfs -o allow_other,defer_permissions,IdentityFile=$PWD/declaratie.pem ubuntu@${!deploymentInstance}:/ $1-sshfs
